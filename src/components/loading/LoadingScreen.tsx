@@ -1,8 +1,5 @@
-// src/components/ui/LoadingScreen.tsx
 
-import React from "react";
-import img from "@/assets/main-logo.svg"; // Rasm manzili mos bo‘lishi kerak
-
+import img from "@/assets/main-logo.svg";
 const LoadingScreen = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen dark:bg-black bg-slate-100 transition-colors">
