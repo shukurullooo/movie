@@ -6,6 +6,7 @@ import {
   AiOutlineVideoCamera,
   AiOutlineUser,
   AiOutlineSearch,
+  AiOutlineHeart,
 } from "react-icons/ai";
 
 const Header = () => {
@@ -59,15 +60,21 @@ const Header = () => {
             Account
           </NavLink>
           <NavLink
-            to="/seorch"
+            to="/search"
             className="hover:text-red-500 transition flex items-center gap-1"
           >
             <AiOutlineSearch size={18} />
             Search
           </NavLink>
+          <NavLink
+            to="/saved"
+            className="hover:text-red-500 transition flex items-center gap-1"
+          >
+            <AiOutlineHeart size={18} />
+            Saved
+          </NavLink>
         </nav>
 
-        {/* O'ng tomondagi elementlar */}
         <div className="flex items-center space-x-4">
           <select className="bg-black text-white border border-white px-2 py-1 rounded text-sm">
             <option value="ru">Ru</option>
@@ -89,6 +96,7 @@ const Header = () => {
         </div>
       </header>
 
+      {/* Mobile Menu */}
       <div
         className={`fixed z-40 bg-black text-white bottom-0 left-0 right-0 transform transition-transform duration-300 md:hidden ${
           mobileMenu ? "translate-y-0" : "translate-y-full"
@@ -120,12 +128,20 @@ const Header = () => {
             Account
           </NavLink>
           <NavLink
-            to="/seorch"
+            to="/search"
             className="hover:text-red-500 transition flex items-center gap-2"
             onClick={toggleMenu}
           >
             <AiOutlineSearch />
             Search
+          </NavLink>
+          <NavLink
+            to="/saved"
+            className="hover:text-red-500 transition flex items-center gap-2"
+            onClick={toggleMenu}
+          >
+            <AiOutlineHeart />
+            Saved
           </NavLink>
         </div>
       </div>

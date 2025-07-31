@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { useRoutes } from "react-router-dom";
 import Seorch from "./seorch/Seorch";
+import Saved from "./Saved/saved";
 
 const Layout = lazy(() => import("./layout/Layout"));
 const Home = lazy(() => import("./home/Home"));
@@ -26,6 +27,10 @@ const MainRouter = () => {
           path: "/movie/:id",
           element: <MovieDetail />,
         }, 
+        {
+         path: "/saved",
+         element: <Saved />,
+       },
          {
           path: "/seorch",
           element: <Seorch />,
@@ -34,6 +39,7 @@ const MainRouter = () => {
           path: "/personDetail/:id",
           element: <PersonDetail />,
         },
+       
       ],
     },
   ]);
