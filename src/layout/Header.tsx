@@ -52,13 +52,7 @@ const Header = () => {
             <AiOutlineVideoCamera size={18} />
             Movies
           </NavLink>
-          <NavLink
-            to="/tickets"
-            className="hover:text-red-500 transition flex items-center gap-1"
-          >
-            <AiOutlineUser size={18} />
-            Account
-          </NavLink>
+         
           <NavLink
             to="/soarch"
             className="hover:text-red-500 transition flex items-center gap-1"
@@ -119,14 +113,7 @@ const Header = () => {
             <AiOutlineVideoCamera />
             Movies
           </NavLink>
-          <NavLink
-            to="/tickets"
-            className="hover:text-red-500 transition flex items-center gap-2"
-            onClick={toggleMenu}
-          >
-            <AiOutlineUser />
-            Account
-          </NavLink>
+          
           <NavLink
             to="/soarch"
             className="hover:text-red-500 transition flex items-center gap-2"
