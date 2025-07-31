@@ -60,7 +60,7 @@ const Header = () => {
             Account
           </NavLink>
           <NavLink
-            to="/search"
+            to="/soarch"
             className="hover:text-red-500 transition flex items-center gap-1"
           >
             <AiOutlineSearch size={18} />
@@ -128,7 +128,7 @@ const Header = () => {
             Account
           </NavLink>
           <NavLink
-            to="/search"
+            to="/soarch"
             className="hover:text-red-500 transition flex items-center gap-2"
             onClick={toggleMenu}
           >
