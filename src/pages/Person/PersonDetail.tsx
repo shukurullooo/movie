@@ -9,6 +9,12 @@ const PersonDetail = () => {
   const { getPersonSingle } = usePerson();
   const { data, isLoading } = getPersonSingle(id || "");
 
+  const profileImage = data?.profile_path
+    ? IMAGE_URL + data.profile_path
+    : "https://via.placeholder.com/300x450?text=No+Image";
+
+  const knownFor = data?.combined_credits?.cast || [];
+
   return (
     <div className="bg-white dark:bg-[#121212] text-gray-900 dark:text-white min-h-screen py-10 px-4">
       <div className="container mx-auto flex flex-col lg:flex-row gap-10 mb-10">
@@ -17,7 +23,7 @@ const PersonDetail = () => {
             <Skeleton.Image style={{ width: 300, height: 450 }} active />
           ) : (
             <img
-              src={IMAGE_URL + data?.profile_path}
+              src={profileImage}
               alt={data?.name}
               className="w-[300px] h-[450px] object-cover rounded-2xl shadow-xl"
             />
@@ -36,13 +42,22 @@ const PersonDetail = () => {
 
               <div className="grid sm:grid-cols-2 gap-4 text-base text-gray-700 dark:text-gray-300 mb-8">
                 {data?.birthday && (
-                  <p><span className="font-semibold">Birthday:</span> {data.birthday}</p>
+                  <p>
+                    <span className="font-semibold">Birthday:</span>{" "}
+                    {data.birthday}
+                  </p>
                 )}
                 {data?.place_of_birth && (
-                  <p><span className="font-semibold">Birthplace:</span> {data.place_of_birth}</p>
+                  <p>
+                    <span className="font-semibold">Birthplace:</span>{" "}
+                    {data.place_of_birth}
+                  </p>
                 )}
                 {data?.deathday && (
-                  <p><span className="font-semibold">Death:</span> {data.deathday}</p>
+                  <p>
+                    <span className="font-semibold">Death:</span>{" "}
+                    {data.deathday}
+                  </p>
                 )}
                 {data?.imdb_id && (
                   <p>
@@ -59,7 +74,8 @@ const PersonDetail = () => {
                 )}
                 {data?.also_known_as?.length > 0 && (
                   <p>
-                    <span className="font-semibold">Also Known As:</span> {data.also_known_as.join(", ")}
+                    <span className="font-semibold">Also Known As:</span>{" "}
+                    {data.also_known_as.join(", ")}
                   </p>
                 )}
               </div>
@@ -75,7 +91,13 @@ const PersonDetail = () => {
 
       <div className="container mx-auto">
         <h2 className="text-2xl font-semibold mb-6">Known For</h2>
-        <MovieView data={data?.crew?.slice(0, 8)} />
+        {isLoading ? (
+          <Skeleton active paragraph={{ rows: 4 }} />
+        ) : knownFor.length > 0 ? (
+          <MovieView data={knownFor.slice(0, 8)} />
+        ) : (
+          <p className="text-gray-500 dark:text-gray-400">No known movies found.</p>
+        )}
       </div>
     </div>
   );

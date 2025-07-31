@@ -14,7 +14,7 @@ interface Props {
 const MovieView: FC<Props> = ({ data }) => {
   const navigate = useNavigate();
   const { saved, togglesaved } = useStore();
-    console.log("Saved movies:", saved);
+  console.log("Saved movies:", saved);
 
   const isLoading = !data || data.length === 0;
 
@@ -49,7 +49,7 @@ const MovieView: FC<Props> = ({ data }) => {
                     className="w-full h-full object-cover"
                   />
                   <span className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">
-                    {movie.release_date.split("-")[0]}
+                    {movie.release_date?.split("-")[0] || "N/A"}
                   </span>
                 </div>
 
@@ -78,7 +78,7 @@ const MovieView: FC<Props> = ({ data }) => {
                     {movie.title}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    ⭐ {movie.vote_average.toFixed(1)} / 10
+                    ⭐ {movie.vote_average?.toFixed(1) ?? "0.0"} / 10
                   </p>
                 </div>
               </div>
