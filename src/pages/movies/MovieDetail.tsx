@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import { useMovie } from "@/api/hooks/useMovie";
 import { IMAGE_URL } from "@/const";
 import { useNavigate, useParams } from "react-router-dom";
-import { Image } from "antd";
 import MovieView from "@/components/movie-view/MovieView";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -12,7 +10,6 @@ const MovieDetail = () => {
 
   const { data } = getMovieSingle(id || "");
   const { data: similarData } = getMovieDetail(id || "", "similar");
-  const { data: imagesData } = getMovieDetail(id || "", "images");
   const { data: creditsData } = getMovieDetail(id || "", "credits");
   const navigate = useNavigate();
 
@@ -44,11 +41,10 @@ const MovieDetail = () => {
 
     
 
-      {/* Cast */}
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-2xl font-semibold mb-4">Cast</h2>
         <div className="flex gap-4 overflow-x-auto scrollbar-thin pb-2">
-          {creditsData?.cast?.slice(0, 20)?.map((person: any) => (
+          {creditsData?.cast?.slice(0, 20)?.map((person: any /* TODO: Replace with correct type */) => (
             <div
               key={person.id}
               className="min-w-[150px] bg-gray-100 dark:bg-[#1e1e1e] rounded-md overflow-hidden shadow-md"
@@ -70,10 +66,9 @@ const MovieDetail = () => {
         </div>
       </div>
 
-      {/* Similar Movies */}
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-2xl font-semibold mb-4">Similar Movies</h2>
-        <MovieView data={similarData?.results?.slice(0, 4)} />
+        <MovieView data={similarData?.results?.slice(0, 4)} loading={!similarData?.results} count={similarData?.results?.length || 0} />
       </div>
     </div>
   );

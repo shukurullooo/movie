@@ -97,7 +97,7 @@ const Home = () => {
       <br />
       <br />
 
-      <MovieView data={data?.results?.slice(0, 8) || []} />
+      <MovieView data={data?.results?.slice(0, 8) || []} loading={isLoading} count={data?.results?.length || 0} />
     </div>
   )
 }

@@ -18,7 +18,7 @@ const Search = () => {
 
   useEffect(() => {
     setParam("query", debounceValue);
-  }, [debounceValue]);
+  }, [debounceValue, setParam]);
 
   const hasResults = data?.results && data.results.length > 0;
 
@@ -47,7 +47,7 @@ const Search = () => {
 
       {debounceValue && value === debounceValue && (
         hasResults ? (
-          <MovieView data={data.results} />
+          <MovieView data={data.results} loading={isLoading} count={data?.results?.length || 0} />
         ) : !isLoading ? (
           <div className="flex justify-center items-center h-60">
             <Empty description="No movies found" />

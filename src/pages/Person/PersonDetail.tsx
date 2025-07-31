@@ -94,7 +94,7 @@ const PersonDetail = () => {
         {isLoading ? (
           <Skeleton active paragraph={{ rows: 4 }} />
         ) : knownFor.length > 0 ? (
-          <MovieView data={knownFor.slice(0, 8)} />
+          <MovieView data={knownFor.slice(0, 8)} loading={isLoading} count={knownFor.length} />
         ) : (
           <p className="text-gray-500 dark:text-gray-400">No known movies found.</p>
         )}

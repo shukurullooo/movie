@@ -31,7 +31,7 @@ const Movies = () => {
   return (
     <div className="">
       <Genre data={genreData?.genres} />
-      <MovieView data={data?.results} />
+      <MovieView data={data?.results} loading={!data?.results} count={data?.results?.length || 0} />
       <div className=" dark: px-4 py-3 rounded shadow flex items-center justify-center">
     <Pagination
       current={page}
