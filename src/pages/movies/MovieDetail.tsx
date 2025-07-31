@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Image } from "antd";
 import MovieView from "@/components/movie-view/MovieView";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -43,32 +42,7 @@ const MovieDetail = () => {
         </div>
       </div>
 
-      {/* Gallery */}
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-2xl font-semibold mb-4">Gallery</h2>
-        <Swiper
-          spaceBetween={10}
-          slidesPerView={3}
-          breakpoints={{
-            640: { slidesPerView: 4 },
-            768: { slidesPerView: 5 },
-            1024: { slidesPerView: 6 },
-          }}
-        >
-          {imagesData?.backdrops?.slice(0, 8)?.map((item: any, index: number) => (
-            <SwiperSlide key={index}>
-              <Image
-                width={150}
-                height={90}
-                src={IMAGE_URL + item.file_path}
-                className="rounded-md object-cover"
-                alt="Backdrop"
-                preview={false}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+    
 
       {/* Cast */}
       <div className="container mx-auto px-4 py-8">

@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { useRoutes } from "react-router-dom";
 import Seorch from "./seorch/Seorch";
-import Saved from "./Saved/saved";
+import Saved from "./Saved/Saved";
 
 const Layout = lazy(() => import("./layout/Layout"));
 const Home = lazy(() => import("./home/Home"));

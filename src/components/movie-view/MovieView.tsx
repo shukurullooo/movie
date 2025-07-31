@@ -7,6 +7,8 @@ import { Bookmark, BookmarkCheck } from "lucide-react";
 
 interface Props {
   data: undefined | IMovie[];
+  loading: boolean;
+  count: number;
 }
 
 const MovieView: FC<Props> = ({ data }) => {
@@ -51,7 +53,6 @@ const MovieView: FC<Props> = ({ data }) => {
                   </span>
                 </div>
 
-                {/* Saved Button */}
                 <button
                   onClick={() => togglesaved(movie)}
                   className={`absolute top-2 right-2 shadow-md backdrop-blur-sm rounded-md p-1 transition-all duration-200 hover:scale-110 ${
