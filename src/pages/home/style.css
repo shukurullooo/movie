@@ -54,8 +54,6 @@ body {
 }
 
 .mySwiper .swiper-slide {
-  width: 25%;
-  height: 100%;
   opacity: 0.4;
   transition: all 0.3s ease;
   border-radius: 12px;
@@ -70,7 +68,6 @@ body {
   z-index: 2;
 }
 
-/* Gradient ring for active thumb */
 .mySwiper .swiper-slide-thumb-active::after {
   content: "";
   position: absolute;
@@ -85,7 +82,6 @@ body {
   pointer-events: none;
 }
 
-/* Optional hover effect for thumbs */
 .mySwiper .swiper-slide:hover {
   transform: scale(1.03);
   opacity: 0.7;
