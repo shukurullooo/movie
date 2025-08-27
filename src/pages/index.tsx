@@ -32,7 +32,7 @@ const MainRouter = () => {
          element: <Saved />,
        },
          {
-          path: "/soarch",
+          path: "/search",
           element: <Seorch />,
         }, 
         {

@@ -42,7 +42,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="max-w-[1360px] w-full h-[640px] mx-auto mt-[50px] rounded-[12px]">
+      <div className="max-w-[1360px] w-full h-[640px] mx-auto  rounded-[12px]">
         <Swiper
           style={{ borderRadius: 12 }}
           spaceBetween={10}

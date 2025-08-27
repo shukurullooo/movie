@@ -1,5 +1,5 @@
 import type { IMovie } from '@/types'
-import { create } from "zustand"
+import { create } from "zustand"      
 import { persist } from "zustand/middleware"
 
 type AuthUser = {
@@ -7,13 +7,17 @@ type AuthUser = {
 } | null
 
 type Store = {
-  saved:IMovie[]
-  togglesaved: (payload:IMovie) => void
+  saved: IMovie[]
+  togglesaved: (payload: IMovie) => void
 
   auth: AuthUser
   setAuth: (payload: AuthUser) => void
   logout: () => void
+
+  language: string
+  setLanguage: (lang: string) => void
 }
+
 export const useStore = create<Store>()(
   persist(
     (set) => ({
@@ -34,9 +38,19 @@ export const useStore = create<Store>()(
       auth: null,
       setAuth: (payload) => set({ auth: payload }),
       logout: () => set({ auth: null }),
+
+      language: "en-US",
+      setLanguage: (lang) => set({ language: lang }),
     }),
     {
-      name: "movie-saved-store", 
-    },
-  ),
+      name: "movie-saved-store",
+      // 🔥 Faqat shularni saqlasin
+      partialize: (state) => ({
+        saved: state.saved,
+        language: state.language,
+      }),
+    }
+  )
 )
+
+

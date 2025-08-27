@@ -7,15 +7,17 @@ import {
   AiOutlineSearch,
   AiOutlineHeart,
 } from "react-icons/ai";
+import { useStore } from "@/Zustand/Store";
 
 const Header = () => {
   const [dark, setDark] = useState(false);
-
+  const { language, setLanguage } = useStore();
+  
   const handleTheme = () => {
     document.body.classList.toggle("dark");
     setDark(!dark);
   };
-
+  
   return (
     <>
       {/* Top Header */}
@@ -45,14 +47,18 @@ const Header = () => {
           </NavLink>
         </nav>
 
+
         {/* Right: Tools */}
         <div className="flex items-center space-x-4">
-          <select className="hidden md:block bg-black text-white border border-white px-2 py-1 rounded text-sm">
-            <option value="ru">Ru</option>
-            <option value="uz">Uz</option>
-            <option value="en">En</option>
+                   <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="hidden md:block bg-black text-white border border-white px-2 py-1 rounded text-sm"
+          >
+            <option value="en-US">En</option>
+            <option value="ru-RU">Ru</option>
+            <option value="uz-UZ">Uz</option>
           </select>
-
           <button onClick={handleTheme} className="text-white">
             {dark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -93,7 +99,6 @@ const Header = () => {
 
       {/* Spacers to avoid content hiding under fixed bars */}
       <div className="h-[60px] md:h-[64px]" />
-      <div className="h-[60px]" />
     </>
   );
 };
